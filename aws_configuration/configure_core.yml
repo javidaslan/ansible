@@ -19,11 +19,19 @@
     #    name: ggc_group
     #    state: present
 
+      
+    - name: Write to the file
+      copy:
+        dest: "facts.txt"
+        content: |
+          "{{ hostvars['localhost'] }}"
+
+
     #- name: Improve harlink/softlink security
     #  lineinfile:
-    #    path: /home/{{ current_user.stdout }}/aws/ansible/test.txt
-    #    line: last
+    #    path: test.txt
+    #    line: "{{ hostvars['localhost'] }}"
 
-    - name: Display OS type
-      debug:
-        msg: "{{ ansible_os_family }}"
+    # - name: Display OS type
+    #   debug:
+    #     msg: "{{ ansible_distribution }}"
