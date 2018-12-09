@@ -1,0 +1,29 @@
+---
+- name: Config environment for IoT Core
+  hosts: localhost
+  gather_facts: true
+
+  tasks:
+    
+    - name: Get current user
+      shell: whoami
+      register: current_user
+
+    #- name: Create ggc_user
+    #  user:
+    #    name: ggc_user
+    #    state: present
+    
+    #- name: Create ggc_group
+    #  group:
+    #    name: ggc_group
+    #    state: present
+
+    #- name: Improve harlink/softlink security
+    #  lineinfile:
+    #    path: /home/{{ current_user.stdout }}/aws/ansible/test.txt
+    #    line: last
+
+    - name: Display OS type
+      debug:
+        msg: "{{ ansible_os_family }}"
